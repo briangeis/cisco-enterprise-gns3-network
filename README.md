@@ -89,5 +89,67 @@ demonstrated throughout the network implementation.
 
 ---
 
+## 2. Network Architecture and Design
+
+### 2.1 IP Addressing Scheme
+
+The network uses private IPv4 address space for internal segmentation and
+simulated public ranges to demonstrate external server access, internet
+connectivity, and site-to-site VPN operations, with a scheme designed to
+ensure segmentation, consistent subnetting, and scalability.
+
+Point-to-point links use `/30` subnets for efficient utilization.
+Main Site links range from `172.16.1.0/30` to `172.16.1.24/30`.
+The Remote Site uses `172.16.2.0/30`.
+
+User VLANs are assigned `/24` subnets for scalability and manageability.
+Main Site VLANs reside in the `10.1.0.0/20` block.
+Remote Site VLANs reside in the `10.2.0.0/20` block.
+Each VLAN is assigned a network-aligned default gateway.
+
+Public simulation ranges include `172.20.1.0/29` (Main Site),
+`172.25.1.0/24` (Remote Site), and `172.30.1.0/24` (simulated external host).
+These ranges are used to model NAT and internet access scenarios.
+
+### 2.2 Network Topology
+
+![Network Topology Diagram](topology.png)
+
+### 2.3 Device Inventory
+
+The following virtual appliances were used in the GNS3 simulation environment:
+
+| Device   | GNS3 Appliance      | Version Used          | Role in Network |
+|----------|---------------------|-----------------------|-----------------|
+| Router   | Cisco IOSv          | 15.9(3)M9             | Core routing and site interconnect |
+| Switch   | Cisco IOSvL2        | 15.2(20200924:215240) | VLAN switching and Layer 2 connectivity |
+| ASA      | Cisco ASAv          | 9.22(1)1              | NAT, security policy, and site-to-site VPN termination |
+| End Host | Alpine Linux        | 3.22.0                | User simulation and connectivity testing |
+| Server   | Networkers' Toolbox | Ubuntu 20.04.2 LTS    | Web services for testing |
+
+### 2.4 VLAN Table
+
+| Location    | VLAN | Name       | Network       |
+| ------------| ---- | ---------- | ------------- |
+| Server Room | 10   | Server     | 10.1.10.0 /24 |
+| Main Site   | 20   | NetAdmin   | 10.1.20.0 /24 |
+|             | 30   | Sales      | 10.1.30.0 /24 |
+|             | 40   | Marketing  | 10.1.40.0 /24 |
+|             | 50   | Accounting | 10.1.50.0 /24 |
+|             | 60   | Management | 10.1.60.0 /24 |
+| Warehouse   | 70   | Shipping   | 10.1.70.0 /24 |
+|             | 80   | Receiving  | 10.1.80.0 /24 |
+| Remote Site | 20   | NetAdmin   | 10.2.20.0 /24 |
+|             | 30   | Sales      | 10.2.30.0 /24 |
+|             | 70   | Shipping   | 10.2.70.0 /24 |
+
+### 2.5 Device Interface and IP Assignments
+
+```
+TODO: Add Device Interface and IP Addressing Table
+```
+
+---
+
 
 
