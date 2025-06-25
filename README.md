@@ -8,6 +8,14 @@ security integration, and structured network documentation.
 
 ## Table of Contents
 
+1. [Overview](#1-overview)  
+&nbsp;&nbsp;&nbsp;&nbsp;1.1 [Network Purpose and Scope](#11-network-purpose-and-scope)  
+&nbsp;&nbsp;&nbsp;&nbsp;2.2 [Technologies and Skills Demonstrated](#12-technologies-and-skills-demonstrated)  
+2. [Network Architecture and Design](#2-network-architecture-and-design)  
+3. [Implementation](#3-implementation)  
+4. [Testing and Validation](#4-testing-and-validation)  
+5. [Appendices](#appendices)  
+
 ---
 
 ## 1. Overview
