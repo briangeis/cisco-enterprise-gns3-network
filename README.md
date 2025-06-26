@@ -9,16 +9,19 @@ security integration, and structured network documentation.
 ## Table of Contents
 
 1. [Overview](#1-overview)  
-&nbsp;&nbsp;&nbsp;&nbsp;1.1 [Network Purpose and Scope](#11-network-purpose-and-scope)  
-&nbsp;&nbsp;&nbsp;&nbsp;2.2 [Technologies and Skills Demonstrated](#12-technologies-and-skills-demonstrated)  
+&nbsp;&nbsp;1.1 [Network Purpose and Scope](#11-network-purpose-and-scope)  
+&nbsp;&nbsp;1.2 [Technologies and Skills Demonstrated](#12-technologies-and-skills-demonstrated)  
 2. [Network Architecture and Design](#2-network-architecture-and-design)  
-&nbsp;&nbsp;&nbsp;&nbsp;2.1 [IP Addressing Scheme](#21-ip-addressing-scheme)  
-&nbsp;&nbsp;&nbsp;&nbsp;2.2 [Network Topology](#22-network-topology)  
-&nbsp;&nbsp;&nbsp;&nbsp;2.3 [Device Inventory](#23-device-inventory)  
-&nbsp;&nbsp;&nbsp;&nbsp;2.5 [Interface and IP Assignments](#25-interface-and-ip-assignments)  
+&nbsp;&nbsp;2.1 [IP Addressing Scheme](#21-ip-addressing-scheme)  
+&nbsp;&nbsp;2.2 [Network Topology](#22-network-topology)  
+&nbsp;&nbsp;2.3 [Device Inventory](#23-device-inventory)  
+&nbsp;&nbsp;2.5 [Interface and IP Assignments](#25-interface-and-ip-assignments)  
 3. [Implementation](#3-implementation)  
 4. [Testing and Validation](#4-testing-and-validation)  
 5. [Appendices](#appendices)  
+&nbsp;&nbsp;A. [Device Configuration Files](#a-device-configuration-files)  
+&nbsp;&nbsp;B. [References](#b-references)  
+&nbsp;&nbsp;C. [License](#c-license)  
 
 ---
 
@@ -171,11 +174,24 @@ TODO: Add Testing and Validation Section
 
 ---
 
-## 5. Appendices
+## Appendices
+
+### A. Device Configuration Files
 
 ```
-TODO: Add Appendices
+TODO: Add Configuration Files
 ```
+
+### B. References
+
+```
+TODO: Add References
+```
+
+### C. License
+
+This project is licensed under the GNU General Public License v3.0.  
+A copy of the license is available in the `LICENSE` file.
 
 ---
 
