@@ -15,7 +15,7 @@ security integration, and structured network documentation.
 &nbsp;&nbsp;&nbsp;&nbsp;2.1 [IP Addressing Scheme](#21-ip-addressing-scheme)  
 &nbsp;&nbsp;&nbsp;&nbsp;2.2 [Network Topology](#22-network-topology)  
 &nbsp;&nbsp;&nbsp;&nbsp;2.3 [Device Inventory](#23-device-inventory)  
-&nbsp;&nbsp;&nbsp;&nbsp;2.5 [Device Interface and IP Assignments](#25-device-interface-and-ip-assignments)  
+&nbsp;&nbsp;&nbsp;&nbsp;2.5 [Interface and IP Assignments](#25-interface-and-ip-assignments)  
 3. [Implementation](#3-implementation)  
 4. [Testing and Validation](#4-testing-and-validation)  
 5. [Appendices](#appendices)  
@@ -123,13 +123,13 @@ These ranges are used to model NAT and internet access scenarios.
 
 The following virtual appliances were used in the GNS3 simulation environment:
 
-| Device   | GNS3 Appliance      | Version Used          | Role in Network |
-|----------|---------------------|-----------------------|-----------------|
-| Router   | Cisco IOSv          | 15.9(3)M9             | Core routing and site interconnect |
-| Switch   | Cisco IOSvL2        | 15.2(20200924:215240) | VLAN switching and Layer 2 connectivity |
-| ASA      | Cisco ASAv          | 9.22(1)1              | NAT, security policy, and site-to-site VPN termination |
-| End Host | Alpine Linux        | 3.22.0                | User simulation and connectivity testing |
-| Server   | Networkers' Toolbox | Ubuntu 20.04.2 LTS    | Web services for testing |
+| Device Type | GNS3 Appliance      | Version Used          |
+|-------------|---------------------|-----------------------|
+| Router      | Cisco IOSv          | 15.9(3)M9             |
+| Switch      | Cisco IOSvL2        | 15.2(20200924:215240) |
+| ASA         | Cisco ASAv          | 9.22(1)1              |
+| End Host    | Alpine Linux        | 3.22.0                |
+| Server      | Networkers' Toolbox | Ubuntu 20.04.2 LTS    |
 
 ### 2.4 VLAN Table
 
@@ -147,7 +147,7 @@ The following virtual appliances were used in the GNS3 simulation environment:
 |             | 30   | Sales      | 10.2.30.0 /24 |
 |             | 70   | Shipping   | 10.2.70.0 /24 |
 
-### 2.5 Device Interface and IP Assignments
+### 2.5 Interface and IP Assignments
 
 ```
 TODO: Add Device Interface and IP Addressing Table
@@ -155,5 +155,27 @@ TODO: Add Device Interface and IP Addressing Table
 
 ---
 
+## 3. Implementation
 
+```
+TODO: Add Implementation Section
+```
+
+---
+
+## 4. Testing and Validation
+
+```
+TODO: Add Testing and Validation Section
+```
+
+---
+
+## 5. Appendices
+
+```
+TODO: Add Appendices
+```
+
+---
 
