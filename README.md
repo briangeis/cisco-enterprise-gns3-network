@@ -126,13 +126,13 @@ These ranges are used to model NAT and internet access scenarios.
 
 The following virtual appliances were used in the GNS3 simulation environment:
 
-| Device Type | GNS3 Appliance      | Version Used          |
-|-------------|---------------------|-----------------------|
-| Router      | Cisco IOSv          | 15.9(3)M9             |
-| Switch      | Cisco IOSvL2        | 15.2(20200924:215240) |
-| ASA         | Cisco ASAv          | 9.22(1)1              |
-| End Host    | Alpine Linux        | 3.22.0                |
-| Server      | Networkers' Toolbox | Ubuntu 20.04.2 LTS    |
+| Device Type | GNS3 Appliance      | Image Type | OS/Version               |
+|-------------|---------------------|------------|--------------------------|
+| Router      | Cisco IOSv          | QEMU       | Cisco IOS 15.9(3)M9      |
+| Switch      | Cisco IOSvL2        | QEMU       | Cisco IOS 15.2(20200924) |
+| ASA         | Cisco ASAv          | QEMU       | Cisco ASA 9.22(1)1       |
+| End Host    | Alpine Linux        | Docker     | Alpine Linux 3.22.0      |
+| Server      | Networkers' Toolbox | Docker     | Ubuntu 20.04.2 LTS       |
 
 ### 2.4 VLAN Table
 
