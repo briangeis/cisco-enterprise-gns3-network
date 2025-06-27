@@ -60,6 +60,7 @@ demonstrated throughout the network implementation.
 
 #### Routing and Switching
 
+- Variable Length Subnet Masking (VLSM) for efficient IP allocation
 - Open Shortest Path First (OSPF) for dynamic routing
 - Hot Standby Router Protocol (HSRP) for gateway redundancy
 - Inter-VLAN routing for network segmentation
@@ -159,9 +160,75 @@ The following virtual appliances were used in the GNS3 simulation environment:
 
 ### 2.5 Interface and IP Assignments
 
-```
-TODO: Add Device Interface and IP Addressing Table
-```
+| Device       | Interface | Description                   | Address          |
+| ------------ | --------- | ------------------------------| ---------------- |
+| CLOUD        | G0/0      | Host Network Gateway                             |
+|              | G0/1      | Cloud Gateway for ASA-MAIN    | 172.20.1.1 /29   |
+|              | G0/2      | Cloud Gateway for ASA-REMOTE  | 172.25.1.1 /24   |
+|              | G0/3      | Cloud Gateway for Web-Client  | 172.30.1.1 /24   |
+| ASA-MAIN     | G0/0      | Link to CLOUD                 | 172.20.1.2 /29   |
+|              | G0/1      | Link to EDGE                  | 172.16.1.1 /30   |
+| EDGE         | G0/0      | Link to ASA-MAIN              | 172.16.1.2 /30   |
+|              | G0/1      | Link to R1                    | 172.16.1.6 /30   |
+|              | G0/2      | Link to R2                    | 172.16.1.10 /30  |
+|              | G0/3      | Link to SW-EDGE               | 172.16.1.14 /30  |
+| R1           | G0/0      | Link to EDGE                  | 172.16.1.5 /30   |
+|              | G0/1      | Link to R2                    | 172.16.1.17 /30  |
+|              | G0/2      | Link to SW-WAREHOUSE          | 172.16.1.21 /30  |
+|              | G0/3      | Trunk Link to SW-FLOOR-1                         |
+|              | G0/3.20   | NetAdmin VLAN 20 Gateway      | 10.1.20.2 /24    |
+|              | G0/3.30   | Sales VLAN 30 Gateway         | 10.1.30.2 /24    |
+|              | G0/3.40   | Marketing VLAN 40 Gateway     | 10.1.40.2 /24    |
+|              | G0/3.50   | Accounting VLAN 50 Gateway    | 10.1.50.2 /24    |
+|              | G0/3.60   | Management VLAN 60 Gateway    | 10.1.60.2 /24    |
+| R2           | G0/0      | Link to EDGE                  | 172.16.1.9 /30   |
+|              | G0/1      | Link to R1                    | 172.16.1.18 /30  |
+|              | G0/2      | Trunk Link to SW-FLOOR-1                         |
+|              | G0/2.20   | NetAdmin VLAN 20 Gateway      | 10.1.20.1 /24    |
+|              | G0/2.30   | Sales VLAN 30 Gateway         | 10.1.30.1 /24    |
+|              | G0/2.40   | Marketing VLAN 40 Gateway     | 10.1.40.1 /24    |
+|              | G0/2.50   | Accounting VLAN 50 Gateway    | 10.1.50.1 /24    |
+|              | G0/2.60   | Management VLAN 60 Gateway    | 10.1.60.1 /24    |
+|              | G0/3      | Link to SW-WAREHOUSE          | 172.16.1.25 /30  |
+| SW-FLOOR-1   | VLAN 20   | Management SVI                | 10.1.20.11 /24   |
+|              | G0/0      | Trunk Link to R2                                 |
+|              | G0/1      | Trunk Link to R1                                 |
+|              | G3/0-1    | Port Channel 2                                   |
+|              | G3/2-3    | Port Channel 1                                   |
+|              | Po1       | Trunk Link to SW-FLOOR-2                         |
+|              | Po2       | Trunk Link to SW-FLOOR-3                         |
+| SW-FLOOR-2   | VLAN 20   | Management SVI                | 10.1.20.12 /24   |
+|              | G3/0-1    | Port Channel 3                                   |
+|              | G3/2-3    | Port Channel 1                                   |
+|              | Po1       | Trunk Link to SW-FLOOR-1                         |
+|              | Po3       | Trunk Link to SW-FLOOR-3                         |
+| SW-FLOOR-3   | VLAN 20   | Management SVI                | 10.1.20.13 /24   |
+|              | G3/0-1    | Port Channel 3                                   |
+|              | G3/2-3    | Port Channel 2                                   |
+|              | Po2       | Trunk Link to SW-FLOOR-1                         |
+|              | Po3       | Trunk Link to SW-FLOOR-2                         |
+| SW-EDGE      | VLAN 10   | Server VLAN 10 Gateway        | 10.1.10.1 /24    |
+|              | G0/0      | Link to EDGE                  | 172.16.1.13 /30  |
+| Server-01    | VLAN 10   | Public Web Server 1           | 10.1.10.10 /24   |
+| Server-02    | VLAN 10   | Public Web Server 2           | 10.1.10.20 /24   |
+| Server-03    | VLAN 10   | Public Web Server 3           | 10.1.10.30 /24   |
+| SW-WAREHOUSE | VLAN 70   | Shipping VLAN 70 Gateway      | 10.1.70.1 /24    |
+|              | VLAN 80   | Receiving VLAN 80 Gateway     | 10.1.80.1 /24    |
+|              | G0/0      | Link to R1                    | 172.16.1.22 /30  |
+|              | G0/1      | Link to R2                    | 172.16.1.26 /30  |
+| ASA-REMOTE   | G0/0      | Link to CLOUD                 | 172.25.1.2 /24   |
+|              | G0/1      | Link to SW-REMOTE             | 172.16.2.1 /30   |
+| SW-REMOTE    | VLAN 20   | NetAdmin VLAN 20 Gateway      | 10.2.20.1 /24    |
+|              | VLAN 30   | Sales VLAN 30 Gateway         | 10.2.30.1 /24    |
+|              | VLAN 70   | Shipping VLAN 70 Gateway      | 10.2.70.1 /24    |
+|              | G0/0      | Link to ASA-REMOTE            | 172.16.2.2 /30   |
+| Web-Client             | | Simulated External Web Client | 172.30.1.2 /24   |
+| GNS3 Cloud Appliance   | | Host Network Bridge                              |
+| HSRP                   | | VLAN 20 Virtual Gateway       | 10.1.20.3 /24    |
+|                        | | VLAN 30 Virtual Gateway       | 10.1.30.3 /24    |
+|                        | | VLAN 40 Virtual Gateway       | 10.1.40.3 /24    |
+|                        | | VLAN 50 Virtual Gateway       | 10.1.50.3 /24    |
+|                        | | VLAN 60 Virtual Gateway       | 10.1.60.3 /24    |
 
 ---
 
@@ -173,6 +240,8 @@ internal sites, then the remote site, and concluding with the devices used
 to validate external connectivity and verify security policies.
 
 ### 3.1 Edge Site (Network Perimeter)
+
+#### Overview
 
 The **Edge Site** serves as the network perimeter, functioning as the primary
 gateway for internet access, external connectivity, and security enforcement.
@@ -228,6 +297,8 @@ communication between internal and external networks.
   - Connected to `R1` and `R2` to facilitate internal site routing.
 
 ### 3.2 Main Site
+
+#### Overview
 
 The **Main Site** serves as the central operational hub of the network,
 hosting end-user devices, departmental VLANs, and core connectivity to
@@ -308,6 +379,8 @@ capabilities.
 
 ### 3.3 Server Room
 
+#### Overview
+
 The **Server Room** serves as the centralized location for hosting internal
 and external network services. In this topology, HTTP servers are used to
 demonstrate secure access from both internal users and external clients.
@@ -353,6 +426,8 @@ services such as application or database servers.
 
 ### 3.4 Warehouse
 
+#### Overview
+
 The **Warehouse** site functions as a supporting network segment located
 adjacent to the **Main Site**. The current topology includes a single Layer 3
 switch and is designed to accommodate future expansion, such as the addition
@@ -381,6 +456,8 @@ operational tools used in warehouse management.
     redundant routing paths and network resilience.
 
 ### 3.5 Remote Site
+
+#### Overview
 
 The **Remote Site** represents a geographically separate location such as a
 home office, branch office, or satellite facility. It maintains secure
@@ -470,6 +547,8 @@ configured with security best practices in mind:
 
 ### 3.7 External Connectivity and Testing
 
+#### Overview
+
 This section outlines the **external connectivity components** used to
 validate the network’s behavior under real-world conditions. These elements
 are not part of the internal enterprise network but are essential for
@@ -497,7 +576,7 @@ routing and enable connectivity between public IP ranges.
   - Connected to `ASA-REMOTE` outside interface.
   - Connected to `Web-Client` to simulate an external host.
 
-#### GNS3 Cloud Appliance
+#### GNS3-CLOUD (GNS3 Cloud Appliance)
 
 - **Role:** Provides a bridge between the GNS3 virtual network and the host
   machine’s physical network.
