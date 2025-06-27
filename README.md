@@ -117,8 +117,8 @@ Main Site links range from `172.16.1.0/30` to `172.16.1.24/30`.
 The Remote Site uses `172.16.2.0/30`.
 
 User VLANs are assigned `/24` subnets for scalability and manageability.
-Main Site VLANs reside in the `10.1.0.0/20` block.
-Remote Site VLANs reside in the `10.2.0.0/20` block.
+Main Site VLANs reside in the `10.1.0.0/16` block.
+Remote Site VLANs reside in the `10.2.0.0/16` block.
 Each VLAN is assigned a network-aligned default gateway.
 
 Public simulation ranges include `172.20.1.0/29` (Main Site),
@@ -174,8 +174,6 @@ to validate external connectivity and verify security policies.
 
 ### 3.1 Edge Site (Network Perimeter)
 
-#### Overview
-
 The **Edge Site** serves as the network perimeter, functioning as the primary
 gateway for internet access, external connectivity, and security enforcement.
 The two components of this site are the `EDGE` Router and the Cisco Adaptive
@@ -230,8 +228,6 @@ communication between internal and external networks.
   - Connected to `R1` and `R2` to facilitate internal site routing.
 
 ### 3.2 Main Site
-
-#### Overview
 
 The **Main Site** serves as the central operational hub of the network,
 hosting end-user devices, departmental VLANs, and core connectivity to
@@ -312,8 +308,6 @@ capabilities.
 
 ### 3.3 Server Room
 
-#### Overview
-
 The **Server Room** serves as the centralized location for hosting internal
 and external network services. In this topology, HTTP servers are used to
 demonstrate secure access from both internal users and external clients.
@@ -359,8 +353,6 @@ services such as application or database servers.
 
 ### 3.4 Warehouse
 
-#### Overview
-
 The **Warehouse** site functions as a supporting network segment located
 adjacent to the **Main Site**. The current topology includes a single Layer 3
 switch and is designed to accommodate future expansion, such as the addition
@@ -389,8 +381,6 @@ operational tools used in warehouse management.
     redundant routing paths and network resilience.
 
 ### 3.5 Remote Site
-
-#### Overview
 
 The **Remote Site** represents a geographically separate location such as a
 home office, branch office, or satellite facility. It maintains secure
@@ -479,8 +469,6 @@ configured with security best practices in mind:
 > applied solely to improve accessibility during evaluation.
 
 ### 3.7 External Connectivity and Testing
-
-#### Overview
 
 This section outlines the **external connectivity components** used to
 validate the network’s behavior under real-world conditions. These elements
