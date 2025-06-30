@@ -11,23 +11,26 @@
 main() {
   # Define the IP addresses of all hosts
   local -A hosts=(
-    ["Server-01"]="8.8.8.8"
-    ["Server-02"]="8.8.8.8"
-    ["Server-03"]="8.8.8.8"
-    ["NetAdmin-PC"]="8.8.8.8"
-    ["Sales-PC"]="8.8.8.8"
-    ["Marketing-PC"]="8.8.8.8"
-    ["Accounting-PC"]="8.8.8.8"
-    ["Management-PC"]="8.8.8.8"
-    ["Shipping-PC"]="8.8.8.8"
-    ["Receiving-PC"]="8.8.8.8"
+    ["Server-01"]="10.1.10.10"
+    ["Server-02"]="10.1.10.20"
+    ["Server-03"]="10.1.10.30"
+    ["NetAdmin-PC"]="10.1.20.51"
+    ["Sales-PC"]="10.1.30.11"
+    ["Marketing-PC"]="10.1.40.11"
+    ["Accounting-PC"]="10.1.50.11"
+    ["Management-PC"]="10.1.60.11"
+    ["Shipping-PC"]="10.1.70.11"
+    ["Receiving-PC"]="10.1.80.11"
+    ["NetAdmin-RM"]="10.2.20.11"
+    ["Sales-RM"]="10.2.30.11"
+    ["Shipping-RM"]="10.2.70.11"
   )
 
   # Define the URLs of all HTTP servers
   local -A servers=(
-    ["Server-01"]="https://github.com"
-    ["Server-02"]="https://github.com"
-    ["Server-03"]="https://github.com"
+    ["Server-01"]="http://10.1.10.10"
+    ["Server-02"]="http://10.1.10.20"
+    ["Server-03"]="http://10.1.10.30"
   )
 
   # Define the domain used for DNS testing
@@ -41,7 +44,7 @@ main() {
     if ping -c1 -W1 "${ip}" &>/dev/null; then
       printf "OK\n"
     else
-      printf "FAIL\n"
+      printf "FAILED\n"
     fi
   done
 
@@ -53,7 +56,7 @@ main() {
     if curl -s --output /dev/null --connect-timeout 5 "${url}"; then
       printf "OK\n"
     else
-      printf "FAIL\n"
+      printf "FAILED\n"
     fi
   done
 
@@ -62,7 +65,7 @@ main() {
   if dig +short "${domain}" &>/dev/null; then
     printf "OK\n"
   else
-    printf "FAIL\n"
+    printf "FAILED\n"
   fi
 }
 
