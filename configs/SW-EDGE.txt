@@ -1,0 +1,304 @@
+SW-EDGE#show running-config 
+Building configuration...
+
+Current configuration : 6417 bytes
+!
+! Last configuration change at 03:00:15 UTC Mon Jun 30 2025
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname SW-EDGE
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+username admin secret 5 $1$eBEI$Q4LKObmTEoq5aNW9/QbbT1
+no aaa new-model
+!
+!
+!
+!         
+!
+!
+!
+!
+no ip domain-lookup
+ip domain-name briangeis.github.io
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree portfast edge default
+spanning-tree portfast edge bpduguard default
+spanning-tree extend system-id
+!
+no cdp run
+!
+! 
+!
+!
+!
+!         
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Link to EDGE
+ no switchport
+ ip address 172.16.1.13 255.255.255.252
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet0/1
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet0/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet0/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/0
+ description Server-01
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/1
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/0
+ description Server-02
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/1
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet3/0
+ description Server-03
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet3/1
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet3/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet3/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface Vlan10
+ description Server VLAN 10 Gateway
+ ip address 10.1.10.1 255.255.255.0
+!
+router ospf 271
+ router-id 6.6.6.6
+ passive-interface default
+ no passive-interface GigabitEthernet0/0
+ network 10.1.10.0 0.0.0.255 area 0
+ network 172.16.1.12 0.0.0.3 area 0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard VTY-NETADMIN
+ remark Restrict Access to VTY Lines
+ permit 10.1.20.0 0.0.0.255
+ permit 10.2.20.0 0.0.0.255
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner motd ^C
+
+          
+BRIAN GEIS | CISCO-ENTERPRISE-GNS3-NETWORK
+https://github.com/briangeis/cisco-enterprise-gns3-network
+
+^C
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+line vty 0 4
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+!
+ntp update-calendar
+ntp server 172.16.1.14
+!
+end
