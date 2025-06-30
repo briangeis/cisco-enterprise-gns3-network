@@ -1,0 +1,212 @@
+R1#show running-config 
+Building configuration...
+
+  
+Current configuration : 3731 bytes
+!
+! Last configuration change at 02:24:27 UTC Mon Jun 30 2025
+! NVRAM config last updated at 02:24:32 UTC Mon Jun 30 2025
+!
+version 15.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name briangeis.github.io
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username admin secret 9 $9$k64.oFa3joye/P$v6FpwQBxYhAijeFQ9srzf9jhodm0EdVoaOxIKpVLZZ2
+!
+redundancy
+!
+no cdp run
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Link to EDGE
+ ip address 172.16.1.5 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description Link to R2
+ ip address 172.16.1.17 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description Link to SW-WAREHOUSE
+ ip address 172.16.1.21 255.255.255.252
+ ip ospf cost 10
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description Trunk Link to SW-FLOOR-1
+ no ip address
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3.20
+ description NetAdmin VLAN 20 Gateway
+ encapsulation dot1Q 20
+ ip address 10.1.20.2 255.255.255.0
+ ip helper-address 172.16.1.6
+ standby version 2
+ standby 1 ip 10.1.20.3
+ standby 1 authentication cisco123
+ ip ospf cost 20
+ no cdp enable
+!
+interface GigabitEthernet0/3.30
+ description Sales VLAN 30 Gateway
+ encapsulation dot1Q 30
+ ip address 10.1.30.2 255.255.255.0
+ ip helper-address 172.16.1.6
+ standby version 2
+ standby 1 ip 10.1.30.3
+ standby 1 authentication cisco123
+ ip ospf cost 20
+ no cdp enable
+!
+interface GigabitEthernet0/3.40
+ description Marketing VLAN 40 Gateway
+ encapsulation dot1Q 40
+ ip address 10.1.40.2 255.255.255.0
+ ip helper-address 172.16.1.6
+ standby version 2
+ standby 1 ip 10.1.40.3
+ standby 1 authentication cisco123
+ ip ospf cost 20
+ no cdp enable
+!
+interface GigabitEthernet0/3.50
+ description Accounting VLAN 50 Gateway
+ encapsulation dot1Q 50
+ ip address 10.1.50.2 255.255.255.0
+ ip helper-address 172.16.1.6
+ standby version 2
+ standby 1 ip 10.1.50.3
+ standby 1 authentication cisco123
+ ip ospf cost 20
+ no cdp enable
+!         
+interface GigabitEthernet0/3.60
+ description Management VLAN 60 Gateway
+ encapsulation dot1Q 60
+ ip address 10.1.60.2 255.255.255.0
+ ip helper-address 172.16.1.6
+ standby version 2
+ standby 1 ip 10.1.60.3
+ standby 1 authentication cisco123
+ ip ospf cost 20
+ no cdp enable
+!
+router ospf 271
+ router-id 2.2.2.2
+ passive-interface GigabitEthernet0/3
+ network 10.1.20.0 0.0.0.255 area 0
+ network 10.1.30.0 0.0.0.255 area 0
+ network 10.1.40.0 0.0.0.255 area 0
+ network 10.1.50.0 0.0.0.255 area 0
+ network 10.1.60.0 0.0.0.255 area 0
+ network 172.16.1.4 0.0.0.3 area 0
+ network 172.16.1.16 0.0.0.3 area 0
+ network 172.16.1.20 0.0.0.3 area 0
+!         
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh version 2
+!
+ip access-list standard VTY-NETADMIN
+ remark Restrict Access to VTY Lines
+ permit 10.1.20.0 0.0.0.255
+ permit 10.2.20.0 0.0.0.255
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+banner motd ^C
+
+BRIAN GEIS | CISCO-ENTERPRISE-GNS3-NETWORK
+https://github.com/briangeis/cisco-enterprise-gns3-network
+          
+^C
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+line vty 0 4
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+!
+no scheduler allocate
+ntp update-calendar
+ntp server 172.16.1.10
+ntp server 172.16.1.6
+!         
+end
