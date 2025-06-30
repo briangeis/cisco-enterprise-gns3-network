@@ -1,0 +1,294 @@
+/ # hostname
+NetAdmin-PC
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+/ # hostname
+Sales-PC
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+/ # hostname
+Marketing-PC
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+/ # hostname
+Accounting-PC
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+/ # hostname
+Management-PC
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+/ # hostname
+Shipping-PC
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+/ # hostname
+Receiving-PC
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+/ # hostname
+NetAdmin-RM
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+/ # hostname
+Sales-RM
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+/ # hostname
+Shipping-RM
+/ # ./internal-test.sh
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+Testing DNS resolution for github.com...OK
+/ #
+
+
+root@Server-01:~# hostname
+Server-01
+root@Server-01:~# ./internal-test.sh 
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+root@Server-01:~#
+
+
+root@Server-02:~# hostname
+Server-02
+root@Server-02:~# ./internal-test.sh 
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+root@Server-02:~#
+
+
+root@Server-03:~# hostname
+Server-03
+root@Server-03:~# ./internal-test.sh 
+Testing ping connectivity to Server-01 (10.1.10.10)... OK
+Testing ping connectivity to Server-03 (10.1.10.30)... OK
+Testing ping connectivity to Sales-RM (10.2.30.11)... OK
+Testing ping connectivity to Server-02 (10.1.10.20)... OK
+Testing ping connectivity to Management-PC (10.1.60.11)... OK
+Testing ping connectivity to Shipping-RM (10.2.70.11)... OK
+Testing ping connectivity to Accounting-PC (10.1.50.11)... OK
+Testing ping connectivity to Marketing-PC (10.1.40.11)... OK
+Testing ping connectivity to NetAdmin-PC (10.1.20.51)... OK
+Testing ping connectivity to Receiving-PC (10.1.80.11)... OK
+Testing ping connectivity to Sales-PC (10.1.30.11)... OK
+Testing ping connectivity to Shipping-PC (10.1.70.11)... OK
+Testing ping connectivity to NetAdmin-RM (10.2.20.11)... OK
+Testing HTTP connectivity to Server-01 (http://10.1.10.10)... OK
+Testing HTTP connectivity to Server-03 (http://10.1.10.30)... OK
+Testing HTTP connectivity to Server-02 (http://10.1.10.20)... OK
+root@Server-03:~#
