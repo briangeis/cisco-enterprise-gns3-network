@@ -1,0 +1,222 @@
+EDGE#show running-config 
+Building configuration...
+
+  
+Current configuration : 4149 bytes
+!
+! Last configuration change at 02:21:07 UTC Mon Jun 30 2025
+! NVRAM config last updated at 02:21:12 UTC Mon Jun 30 2025
+!
+version 15.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname EDGE
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+ip dhcp excluded-address 10.1.20.1 10.1.20.50
+ip dhcp excluded-address 10.1.30.1 10.1.30.10
+ip dhcp excluded-address 10.1.40.1 10.1.40.10
+ip dhcp excluded-address 10.1.50.1 10.1.50.10
+ip dhcp excluded-address 10.1.60.1 10.1.60.10
+ip dhcp excluded-address 10.1.70.1 10.1.70.10
+ip dhcp excluded-address 10.1.80.1 10.1.80.10
+ip dhcp excluded-address 10.2.20.1 10.2.20.10
+ip dhcp excluded-address 10.2.30.1 10.2.30.10
+ip dhcp excluded-address 10.2.70.1 10.2.70.10
+!
+ip dhcp pool NETADMIN-VLAN-20
+ network 10.1.20.0 255.255.255.0
+ default-router 10.1.20.3 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!
+ip dhcp pool SALES-VLAN-30
+ network 10.1.30.0 255.255.255.0
+ default-router 10.1.30.3 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!
+ip dhcp pool MARKETING-VLAN-40
+ network 10.1.40.0 255.255.255.0
+ default-router 10.1.40.3 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!
+ip dhcp pool ACCOUNTING-VLAN-50
+ network 10.1.50.0 255.255.255.0
+ default-router 10.1.50.3 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!
+ip dhcp pool MANAGEMENT-VLAN-60
+ network 10.1.60.0 255.255.255.0
+ default-router 10.1.60.3 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!
+ip dhcp pool SHIPPING-VLAN-70
+ network 10.1.70.0 255.255.255.0
+ default-router 10.1.70.1 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!
+ip dhcp pool RECEIVING-VLAN-80
+ network 10.1.80.0 255.255.255.0
+ default-router 10.1.80.1 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!
+ip dhcp pool NETADMIN-REMOTE
+ network 10.2.20.0 255.255.255.0
+ default-router 10.2.20.1 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!         
+ip dhcp pool SALES-REMOTE
+ network 10.2.30.0 255.255.255.0
+ default-router 10.2.30.1 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!
+ip dhcp pool SHIPPING-REMOTE
+ network 10.2.70.0 255.255.255.0
+ default-router 10.2.70.1 
+ dns-server 8.8.8.8 
+ domain-name briangeis.github.io
+!
+!
+!
+no ip domain lookup
+ip domain name briangeis.github.io
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!         
+!
+username admin secret 9 $9$CdysHqNoc3kOVP$0Dtb0TAMGJyZqIJPan0c.7XvNNaTEQOmnMcgygYS13M
+!
+redundancy
+!
+no cdp run
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Link to ASA-MAIN
+ ip address 172.16.1.2 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ description Link to R1
+ ip address 172.16.1.6 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ description Link to R2
+ ip address 172.16.1.10 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ description Link to SW-EDGE
+ ip address 172.16.1.14 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 271
+ router-id 1.1.1.1
+ passive-interface GigabitEthernet0/0
+ network 172.16.1.0 0.0.0.3 area 0
+ network 172.16.1.4 0.0.0.3 area 0
+ network 172.16.1.8 0.0.0.3 area 0
+ network 172.16.1.12 0.0.0.3 area 0
+ default-information originate
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 172.16.1.1
+ip ssh version 2
+!
+ip access-list standard VTY-NETADMIN
+ remark Restrict Access to VTY Lines
+ permit 10.1.20.0 0.0.0.255
+ permit 10.2.20.0 0.0.0.255
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+banner motd ^C
+
+BRIAN GEIS | CISCO-ENTERPRISE-GNS3-NETWORK
+https://github.com/briangeis/cisco-enterprise-gns3-network
+
+^C
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+line vty 0 4
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+!
+no scheduler allocate
+ntp master 2
+!
+end
