@@ -1,0 +1,67 @@
+EDGE#show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+6.6.6.6           1   FULL/BDR        00:00:33    172.16.1.13     GigabitEthernet0/3
+2.2.2.2           1   FULL/BDR        00:00:35    172.16.1.5      GigabitEthernet0/1
+EDGE#
+EDGE#show ip route ospf   
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+
+Gateway of last resort is 172.16.1.1 to network 0.0.0.0
+
+      10.0.0.0/24 is subnetted, 8 subnets
+O        10.1.10.0 [110/2] via 172.16.1.13, 01:37:42, GigabitEthernet0/3
+O        10.1.20.0 [110/21] via 172.16.1.5, 00:00:24, GigabitEthernet0/1
+O        10.1.30.0 [110/21] via 172.16.1.5, 00:00:14, GigabitEthernet0/1
+O        10.1.40.0 [110/21] via 172.16.1.5, 00:00:24, GigabitEthernet0/1
+O        10.1.50.0 [110/21] via 172.16.1.5, 00:00:24, GigabitEthernet0/1
+O        10.1.60.0 [110/21] via 172.16.1.5, 00:00:14, GigabitEthernet0/1
+O        10.1.70.0 [110/12] via 172.16.1.5, 00:04:55, GigabitEthernet0/1
+O        10.1.80.0 [110/12] via 172.16.1.5, 00:04:55, GigabitEthernet0/1
+      172.16.0.0/16 is variably subnetted, 11 subnets, 2 masks
+O        172.16.1.16/30 [110/2] via 172.16.1.5, 00:00:24, GigabitEthernet0/1
+O        172.16.1.20/30 [110/11] via 172.16.1.5, 00:04:55, GigabitEthernet0/1
+O        172.16.1.24/30 [110/31] via 172.16.1.5, 00:00:24, GigabitEthernet0/1
+EDGE#
+
+
+
+
+R1#show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+4.4.4.4           1   FULL/DR         00:00:32    172.16.1.22     GigabitEthernet0/2
+1.1.1.1           1   FULL/DR         00:00:35    172.16.1.6      GigabitEthernet0/0
+R1#
+R1#show ip route ospf
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+
+Gateway of last resort is 172.16.1.6 to network 0.0.0.0
+
+O*E2  0.0.0.0/0 [110/1] via 172.16.1.6, 00:05:25, GigabitEthernet0/0
+      10.0.0.0/8 is variably subnetted, 13 subnets, 2 masks
+O        10.1.10.0/24 [110/3] via 172.16.1.6, 00:05:25, GigabitEthernet0/0
+O        10.1.70.0/24 [110/11] via 172.16.1.22, 00:05:15, GigabitEthernet0/2
+O        10.1.80.0/24 [110/11] via 172.16.1.22, 00:05:15, GigabitEthernet0/2
+      172.16.0.0/16 is variably subnetted, 10 subnets, 2 masks
+O        172.16.1.0/30 [110/2] via 172.16.1.6, 00:05:25, GigabitEthernet0/0
+O        172.16.1.8/30 [110/2] via 172.16.1.6, 00:05:25, GigabitEthernet0/0
+O        172.16.1.12/30 [110/2] via 172.16.1.6, 00:05:25, GigabitEthernet0/0
+O        172.16.1.24/30 [110/30] via 172.16.1.22, 00:01:01, GigabitEthernet0/2
+R1#
