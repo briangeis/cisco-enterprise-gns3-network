@@ -1,0 +1,312 @@
+SW-WAREHOUSE#show running-config 
+Building configuration...
+
+Current configuration : 6645 bytes
+!
+! Last configuration change at 03:02:51 UTC Mon Jun 30 2025
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname SW-WAREHOUSE
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+username admin secret 5 $1$49Qw$v/B4.LOjZnZIfytDOROjh1
+no aaa new-model
+!
+!
+!
+!         
+!
+!
+!
+!
+no ip domain-lookup
+ip domain-name briangeis.github.io
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree portfast edge default
+spanning-tree portfast edge bpduguard default
+spanning-tree extend system-id
+!
+no cdp run
+!
+! 
+!
+!
+!
+!         
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description Link to R1
+ no switchport
+ ip address 172.16.1.22 255.255.255.252
+ ip ospf cost 10
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet0/1
+ description Link to R2
+ no switchport
+ ip address 172.16.1.26 255.255.255.252
+ ip ospf cost 20
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet0/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet0/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/0
+ description Shipping-PC
+ switchport access vlan 70
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/1
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown 
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/0
+ description Receiving-PC
+ switchport access vlan 80
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/1
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet3/0
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet3/1
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet3/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet3/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface Vlan70
+ description Shipping VLAN 70 Gateway
+ ip address 10.1.70.1 255.255.255.0
+ ip helper-address 172.16.1.6 
+ ip helper-address 172.16.1.10 
+!
+interface Vlan80
+ description Receiving VLAN 80 Gateway
+ ip address 10.1.80.1 255.255.255.0
+ ip helper-address 172.16.1.6 
+ ip helper-address 172.16.1.10 
+!
+router ospf 271
+ router-id 4.4.4.4
+ passive-interface default
+ no passive-interface GigabitEthernet0/0
+ no passive-interface GigabitEthernet0/1
+ network 10.1.70.0 0.0.0.255 area 0
+ network 10.1.80.0 0.0.0.255 area 0
+ network 172.16.1.20 0.0.0.3 area 0
+ network 172.16.1.24 0.0.0.3 area 0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard VTY-NETADMIN
+ remark Restrict Access to VTY Lines
+ permit 10.1.20.0 0.0.0.255
+ permit 10.2.20.0 0.0.0.255
+!
+!
+!         
+!
+!
+!
+control-plane
+!
+banner motd ^C
+
+BRIAN GEIS | CISCO-ENTERPRISE-GNS3-NETWORK
+https://github.com/briangeis/cisco-enterprise-gns3-network
+
+^C
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+line vty 0 4
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+!
+ntp update-calendar
+ntp server 172.16.1.10
+ntp server 172.16.1.6
+!
+end
