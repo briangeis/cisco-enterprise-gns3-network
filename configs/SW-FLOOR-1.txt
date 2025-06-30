@@ -1,0 +1,314 @@
+SW-FLOOR-1#show running-config 
+Building configuration...
+
+Current configuration : 6814 bytes
+!
+! Last configuration change at 02:43:29 UTC Mon Jun 30 2025
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname SW-FLOOR-1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+username admin secret 5 $1$1Yd2$S8jyRWCqUs68mjMAeE7Nx1
+no aaa new-model
+!
+!
+!
+!         
+!
+!
+!
+!
+no ip domain-lookup
+ip domain-name briangeis.github.io
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast edge default
+spanning-tree portfast edge bpduguard default
+spanning-tree extend system-id
+spanning-tree vlan 20,30 priority 24576
+spanning-tree vlan 60 priority 28672
+!
+no cdp run
+!
+! 
+!
+!         
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ description Trunk Link to SW-FLOOR-2
+ switchport access vlan 99
+ switchport trunk allowed vlan 20,30,40,50,60
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface Port-channel2
+ description Trunk Link to SW-FLOOR-3
+ switchport access vlan 99
+ switchport trunk allowed vlan 20,30,40,50,60
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet0/0
+ description Trunk Link to R2
+ switchport access vlan 99
+ switchport trunk allowed vlan 20,30,40,50,60
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet0/1
+ description Trunk Link to R1
+ switchport access vlan 99
+ switchport trunk allowed vlan 20,30,40,50,60
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet0/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet0/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown 
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/0
+ description NetAdmin-PC
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/1
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet1/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/0
+ description Sales-PC
+ switchport access vlan 30
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/1
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/2
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet2/3
+ switchport access vlan 99
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security
+ shutdown
+ negotiation auto
+ no cdp enable
+!
+interface GigabitEthernet3/0
+ description Port Channel 2
+ switchport access vlan 99
+ switchport trunk allowed vlan 20,30,40,50,60
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ no cdp enable
+ channel-group 2 mode active
+!
+interface GigabitEthernet3/1
+ description Port Channel 2
+ switchport access vlan 99
+ switchport trunk allowed vlan 20,30,40,50,60
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ no cdp enable
+ channel-group 2 mode active
+!
+interface GigabitEthernet3/2
+ description Port Channel 1
+ switchport access vlan 99
+ switchport trunk allowed vlan 20,30,40,50,60
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ no cdp enable
+ channel-group 1 mode active
+!
+interface GigabitEthernet3/3
+ description Port Channel 1
+ switchport access vlan 99
+ switchport trunk allowed vlan 20,30,40,50,60
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ no cdp enable
+ channel-group 1 mode active
+!
+interface Vlan20
+ description Management SVI
+ ip address 10.1.20.11 255.255.255.0
+!
+ip default-gateway 10.1.20.1
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard VTY-NETADMIN
+ remark Restrict Access to VTY Lines
+ permit 10.1.20.0 0.0.0.255
+ permit 10.2.20.0 0.0.0.255
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner motd ^C
+
+BRIAN GEIS | CISCO-ENTERPRISE-GNS3-NETWORK
+https://github.com/briangeis/cisco-enterprise-gns3-network
+
+^C
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+line vty 0 4
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+line vty 5 15
+ access-class VTY-NETADMIN in
+ logging synchronous
+ login local
+ transport input ssh
+!
+ntp update-calendar
+ntp server 10.1.20.1
+!
+end
