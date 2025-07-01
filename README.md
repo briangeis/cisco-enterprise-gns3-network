@@ -707,6 +707,49 @@ All results are included in the following files:
 - results/ospf_status_after_r1_down.txt
 - results/ospf_status_after_r2_down.txt
 
+### 4.4 HSRP Validation
+
+This test validates the correct operation of HSRP (Hot Standby Router Protocol)
+under both normal operation and router failure scenarios. The goal is to
+confirm that HSRP is properly configured for first-hop redundancy, and that
+failover occurs seamlessly when the active router becomes unavailable.
+
+#### Commands Used
+
+```
+traceroute
+show standby brief
+```
+
+#### Validation Steps
+
+1. A traceroute was initiated from the end host `NetAdmin-PC` to the inside
+  interface of `ASA-MAIN` to confirm that traffic was routed through `R2`,
+  the designated active HSRP router under normal conditions.
+2. The command `show standby brief` was executed on `R1`, the standby HSRP
+  router, to verify its current standby status.
+3. To simulate a failure, `R2` was administratively shut down.
+4. The traceroute from step 1 was repeated to verify that traffic was now
+  routed through `R1`, confirming HSRP failover.
+5. The `show standby brief` command was executed again on `R1` to verify that
+  it had transitioned from standby to active status.
+
+This test confirms that:
+- HSRP is configured and functioning correctly under normal conditions
+- Failover occurs automatically and seamlessly when the active router
+  becomes unavailable
+- End hosts experience no disruption in connectivity during the transition
+- The standby router assumes the virtual IP and begins forwarding traffic
+  as expected
+
+#### Results
+
+All results are included in the following files:
+- `results/hsrp_traceroute_before.txt`
+- `results/hsrp_status_before.txt`
+- `results/hsrp_traceroute_after.txt`
+- `results/hsrp_status_after.txt`
+
 ---
 
 ## Appendices
