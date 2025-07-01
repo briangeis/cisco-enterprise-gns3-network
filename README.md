@@ -613,9 +613,55 @@ routing and enable connectivity between public IP ranges.
 
 ## 4. Testing and Validation
 
-```
-TODO: Add Testing and Validation Section
-```
+### 4.1 Internal Host Connectivity
+
+A Bash script is executed from each **internal end host** to verify:
+
+| Test Type | Purpose                                                |
+|-----------|--------------------------------------------------------|
+| `ping`    | Confirm Layer 3 reachability between VLANs             |
+| `curl`    | Verify HTTP access to internal servers                 |
+| `dig`     | Validate DNS resolution using DHCP-assigned DNS server |
+
+This script ensures that:
+- Hosts are receiving full IP configuration (IP, gateway, DNS)
+  via DHCP from `EDGE`
+- VLAN segmentation and routing are functioning correctly
+- Internal HTTP services are accessible from all internal VLANs
+- The Site-to-Site VPN tunnel is active and supports inter-VLAN
+  routing and DHCP services
+
+#### Script Location
+
+`scripts/internal-test.sh`
+
+#### Results
+
+Test results from all hosts are included in:  
+`results/internal_connectivity_test_output.txt`
+
+### 4.2 External Host Connectivity
+
+A Bash script is executed from the **Web-Client (external host)** to verify:
+
+| Test Type | Purpose                                                   |
+|-----------|-----------------------------------------------------------|
+| `ping`    | Confirm ICMP reachability to internal servers             |
+| `curl`    | Validate HTTP access to publicly exposed internal servers |
+
+This script ensures that:
+- Servers behind `ASA-MAIN` are accessible via **static NAT** and **ACLs**
+- ICMP is explicitly allowed to internal servers only
+- `ASA-MAIN` is enforcing **stateful inspection** and **access control**
+
+#### Script Location
+
+`scripts/external-test.sh`
+
+#### Results
+
+Test results are included in:  
+`results/external_connectivity_test_output.txt`
 
 ---
 
