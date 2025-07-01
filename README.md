@@ -25,6 +25,10 @@ security integration, and structured network documentation.
 &nbsp;&nbsp;3.6 [Network Device Hardening](#36-network-device-hardening)  
 &nbsp;&nbsp;3.7 [External Connectivity and Testing](#37-external-connectivity-and-testing)  
 4. [Testing and Validation](#4-testing-and-validation)  
+&nbsp;&nbsp;4.1 [Internal Host Connectivity](#41-internal-host-connectivity)  
+&nbsp;&nbsp;4.2 [External Host Connectivity](#42-external-host-connectivity)  
+&nbsp;&nbsp;4.3 [OSPF Validation](#43-ospf-validation)  
+&nbsp;&nbsp;4.4 [HSRP Validation](#44-hsrp-validation)  
 5. [Appendices](#appendices)  
 &nbsp;&nbsp;A. [Device Configuration Files](#a-device-configuration-files)  
 &nbsp;&nbsp;B. [References](#b-references)  
@@ -701,6 +705,7 @@ This test confirms that:
 - Redundant paths are automatically selected and used when available
 
 #### Results
+
 All results are included in the following files:
 
 - results/ospf_status_before.txt
