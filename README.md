@@ -613,6 +613,12 @@ routing and enable connectivity between public IP ranges.
 
 ## 4. Testing and Validation
 
+This section validates the network’s core functionality through
+four key tests: internal and external host connectivity, OSPF dynamic
+routing behavior, and HSRP redundancy and failover. These tests
+confirm that the network operates as designed, with proper routing,
+access control, redundancy, and service availability.
+
 ### 4.1 Internal Host Connectivity
 
 A Bash script is executed from each **internal end host** to verify:
@@ -662,6 +668,44 @@ This script ensures that:
 
 Test results are included in:  
 `results/external_connectivity_test_output.txt`
+
+### 4.3 OSPF Validation
+
+This test validates the correct operation and redundancy behavior of the OSPF
+routing protocol under both normal operation and device failure scenarios.
+It confirms that OSPF neighbors form properly, routes are dynamically learned,
+and the network converges appropriately when a path becomes unavailable.
+
+#### Commands Used
+
+```
+show ip ospf neighbor
+show ip route ospf
+```
+
+#### Validation Steps
+
+1. Under normal network conditions, OSPF neighbor relationships and
+  routing tables were captured from the three participating routers:
+  `EDGE`, `R1`, and `R2`.
+2. `R1` was administratively shut down to simulate a failure, and
+  OSPF neighbor and route information was rechecked on `EDGE` and `R2`.  
+3. After restoring `R1` to normal operation, `R2` was shut down,
+  and the same OSPF verification steps were repeated on `EDGE` and `R1`.
+
+This test confirms that:
+
+- OSPF neighbors form correctly under normal conditions
+- OSPF routes are dynamically learned and maintained across the network
+- The network converges successfully during failure conditions
+- Redundant paths are automatically selected and used when available
+
+#### Results
+All results are included in the following files:
+
+- results/ospf_status_before.txt
+- results/ospf_status_after_r1_down.txt
+- results/ospf_status_after_r2_down.txt
 
 ---
 
