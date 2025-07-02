@@ -643,12 +643,12 @@ This script ensures that:
 
 #### Script Location
 
-[`scripts/internal-test.sh`](scripts/internal-test.sh)
+[scripts/internal-test.sh](scripts/internal-test.sh)
 
 #### Results
 
 Test results from all hosts are included in:  
-[`results/internal_connectivity_test_output.txt`](results/internal_connectivity_test_output.txt)
+[results/internal_connectivity_test_output.txt](results/internal_connectivity_test_output.txt)
 
 ### 4.2 External Host Connectivity
 
@@ -666,12 +666,12 @@ This script ensures that:
 
 #### Script Location
 
-[`scripts/external-test.sh`](scripts/external-test.sh)
+[scripts/external-test.sh](scripts/external-test.sh)
 
 #### Results
 
 Test results are included in:  
-[`results/external_connectivity_test_output.txt`](results/external_connectivity_test_output.txt)
+[results/external_connectivity_test_output.txt](results/external_connectivity_test_output.txt)
 
 ### 4.3 OSPF Validation
 
@@ -708,9 +708,9 @@ This test confirms that:
 
 All results are included in the following files:
 
-- [`results/ospf_status_before.txt`](results/ospf_status_before.txt)
-- [`results/ospf_status_after_r1_down.txt`](results/ospf_status_after_r1_down.txt)
-- [`results/ospf_status_after_r2_down.txt`](results/ospf_status_after_r2_down.txt)
+- [results/ospf_status_before.txt](results/ospf_status_before.txt)
+- [results/ospf_status_after_r1_down.txt](results/ospf_status_after_r1_down.txt)
+- [results/ospf_status_after_r2_down.txt](results/ospf_status_after_r2_down.txt)
 
 ### 4.4 HSRP Validation
 
@@ -750,10 +750,10 @@ This test confirms that:
 #### Results
 
 All results are included in the following files:
-- [`results/hsrp_traceroute_before.txt`](results/hsrp_traceroute_before.txt)
-- [`results/hsrp_status_before.txt`](results/hsrp_status_before.txt)
-- [`results/hsrp_traceroute_after.txt`](results/hsrp_traceroute_after.txt)
-- [`results/hsrp_status_after.txt`](results/hsrp_status_after.txt)
+- [results/hsrp_traceroute_before.txt](results/hsrp_traceroute_before.txt)
+- [results/hsrp_status_before.txt](results/hsrp_status_before.txt)
+- [results/hsrp_traceroute_after.txt](results/hsrp_traceroute_after.txt)
+- [results/hsrp_status_after.txt](results/hsrp_status_after.txt)
 
 ---
 
