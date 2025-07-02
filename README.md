@@ -761,9 +761,16 @@ All results are included in the following files:
 
 ### A. Device Configuration Files
 
-```
-TODO: Add Configuration Files
-```
+- [configs/CLOUD.txt](configs/CLOUD.txt)
+- [configs/EDGE.txt](configs/EDGE.txt)
+- [configs/R1.txt](configs/R1.txt)
+- [configs/R2.txt](configs/R2.txt)
+- [configs/SW-FLOOR-1.txt](configs/SW-FLOOR-1.txt)
+- [configs/SW-FLOOR-2.txt](configs/SW-FLOOR-2.txt)
+- [configs/SW-FLOOR-3.txt](configs/SW-FLOOR-3.txt)
+- [configs/SW-EDGE.txt](configs/SW-EDGE.txt)
+- [configs/SW-WAREHOUSE.txt](configs/SW-WAREHOUSE.txt)
+- [configs/SW-REMOTE.txt](configs/SW-REMOTE.txt)
 
 ### B. References
 
