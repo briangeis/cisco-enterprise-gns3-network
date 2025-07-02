@@ -774,9 +774,15 @@ All results are included in the following files:
 
 ### B. References
 
-```
-TODO: Add References
-```
+- [Cisco Networking Academy](https://www.netacad.com)
+- [Cisco IOS Master Command List](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/mcl/allreleasemcl/all-book.html)
+- [Cisco IOS Command References](https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-15-5m-t/products-command-reference-list.html)
+- [Cisco IOS Configuration Guides](https://www.cisco.com/c/en/us/support/ios-nx-os-software/ios-15-5m-t/products-installation-and-configuration-guides-list.html)
+- [Cisco Secure Firewall ASA Configuration Guides](https://www.cisco.com/c/en/us/support/security/adaptive-security-appliance-asa-software/products-installation-and-configuration-guides-list.html)
+- [GNS3 Official Documentation](https://docs.gns3.com)
+- [Alpine Linux Wiki](https://wiki.alpinelinux.org/wiki/Main_Page)
+- [Docker Hub | Alpine Linux End Host](https://hub.docker.com/r/gns3/endhost)
+- [Docker Hub | Networkers' Toolbox](https://hub.docker.com/r/adosztal/net_toolbox)
 
 ### C. License
 
