@@ -762,6 +762,7 @@ All results are included in the following files:
 ### A. Device Configuration Files
 
 - [configs/CLOUD.txt](configs/CLOUD.txt)
+- [configs/ASA-MAIN.txt](configs/ASA-MAIN.txt)
 - [configs/EDGE.txt](configs/EDGE.txt)
 - [configs/R1.txt](configs/R1.txt)
 - [configs/R2.txt](configs/R2.txt)
@@ -770,6 +771,7 @@ All results are included in the following files:
 - [configs/SW-FLOOR-3.txt](configs/SW-FLOOR-3.txt)
 - [configs/SW-EDGE.txt](configs/SW-EDGE.txt)
 - [configs/SW-WAREHOUSE.txt](configs/SW-WAREHOUSE.txt)
+- [configs/ASA-REMOTE.txt](configs/ASA-REMOTE.txt)
 - [configs/SW-REMOTE.txt](configs/SW-REMOTE.txt)
 
 ### B. References
