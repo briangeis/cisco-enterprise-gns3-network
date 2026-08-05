@@ -636,7 +636,7 @@ A Bash script is executed from each **internal end host** to verify:
 |-----------|--------------------------------------------------------|
 | `ping`    | Confirm Layer 3 reachability between VLANs             |
 | `curl`    | Verify HTTP access to internal servers                 |
-| `dig`     | Validate DNS resolution using DHCP-assigned DNS server |
+| `host`    | Validate DNS resolution using DHCP-assigned DNS server |
 
 This script ensures that:
 - Hosts are receiving full IP configuration (IP, gateway, DNS)
@@ -663,11 +663,14 @@ A Bash script is executed from the **Web-Client (external host)** to verify:
 |-----------|-----------------------------------------------------------|
 | `ping`    | Confirm ICMP reachability to internal servers             |
 | `curl`    | Validate HTTP access to publicly exposed internal servers |
+| `host`    | Validate DNS resolution via the simulated ISP (`CLOUD`)   |
 
 This script ensures that:
 - Servers behind `ASA-MAIN` are accessible via static NAT and ACLs
-- ICMP is explicitly allowed to internal servers only
+- ICMP is explicitly allowed to internal servers
 - `ASA-MAIN` is enforcing stateful inspection and access control
+- External name resolution succeeds via `CLOUD` acting as the upstream
+  resolver
 
 #### Script Location
 
