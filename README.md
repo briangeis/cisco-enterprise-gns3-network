@@ -65,6 +65,7 @@ demonstrated throughout the network implementation.
 
 - Variable Length Subnet Masking (VLSM) for efficient IP allocation
 - Open Shortest Path First (OSPF) for dynamic routing
+- Static default routes, advertised into OSPF by the edge router
 - Hot Standby Router Protocol (HSRP) for gateway redundancy
 - Inter-VLAN routing for network segmentation
 - Layer 2 switching (access and trunk ports)
@@ -163,7 +164,7 @@ The following virtual appliances were used in the GNS3 simulation environment:
 
 | Device       | Interface | Description                   | Address          |
 |--------------|-----------|-------------------------------|:----------------:|
-| CLOUD        | G0/0      | Host Network Gateway          | N/A              |
+| CLOUD        | G0/0      | Internet                      | DHCP             |
 |              | G0/1      | Cloud Gateway for ASA-MAIN    | 172.20.1.1 /29   |
 |              | G0/2      | Cloud Gateway for ASA-REMOTE  | 172.25.1.1 /24   |
 |              | G0/3      | Cloud Gateway for Web-Client  | 172.30.1.1 /24   |
@@ -261,8 +262,8 @@ communication between internal and external networks.
   - **Access Control Lists (ACLs):**
     - Extended ACL applied to the `outside` interface to allow external
       HTTP/HTTPS and ICMP traffic to internal servers.
-    - Crypto ACL to determine whether outbound traffic is routed via NAT/PAT
-      or encapsulated in the site-to-site VPN tunnel.
+    - Crypto ACL to select traffic for the site-to-site VPN tunnel, exempt
+      from NAT/PAT translation.
   - **Stateful Inspection:** Ensures only legitimate, session-aware traffic
     is allowed through the perimeter.
   - **Site-to-Site IKEv2 VPN:** A secure, encrypted tunnel established with
@@ -278,15 +279,17 @@ communication between internal and external networks.
 #### EDGE Router
 
 - **Role:** Serves as the central aggregation point for internal traffic,
-  while also providing DHCP and NTP network services.
+  while also providing DHCP, DNS, and NTP network services.
 
 - **Key Features:**
   - **Default Route:** Configured to forward all external-bound traffic to
     `ASA-MAIN`.
   - **OSPF Routing:** Participates in the OSPF routing domain to ensure
     dynamic path selection and redundancy within the internal network.
-  - **DHCP Server:** Provides dynamic IP address allocation to internal
-    clients across the network.
+  - **DHCP and DNS Services:** Provides dynamic addressing and name resolution
+    for clients at both sites, forwarding external DNS queries to the `CLOUD`
+    Router. Remote-site clients reach both services across the site-to-site
+    tunnel.
   - **NTP Server:** Functions as the primary NTP master, synchronizing time
     across all network devices for consistency and accurate logging.
 
@@ -489,9 +492,8 @@ scalable, and segmented access to both local and corporate resources.
 - **Key Features:**
   - **Port Address Translation (PAT):** Enables internal hosts to access the
     internet using a shared public IP address.
-  - **Access Control Lists (ACLs):** Crypto ACLs determine whether traffic is
-    routed directly to the internet via PAT or encapsulated and sent through
-    the site-to-site VPN tunnel.
+  - **Access Control Lists (ACLs):** Crypto ACLs select traffic for the
+    site-to-site VPN tunnel; other outbound traffic is translated by PAT.
   - **Stateful Inspection:** Ensures only legitimate, session-aware traffic
     is allowed through the perimeter.
   - **Site-to-Site IKEv2 VPN:** A secure, encrypted tunnel established with
@@ -520,7 +522,7 @@ configured with security best practices in mind:
 
 - **Secure Remote Access:**
   - All devices are configured to allow SSH-only remote management.
-  - SSH version 2 is enforced with strong encryption and authentication.
+  - SSH version 2 is enforced, with legacy ciphers disabled.
   - Access to VTY lines is restricted using ACLs that permit connections only
     from authorized NetAdmin networks.
   - Telnet access is explicitly disabled.
@@ -536,14 +538,14 @@ configured with security best practices in mind:
 > [!NOTE]
 > For demonstration and ease of review, the following non-secure settings
 > have been intentionally configured:
-> - Console and AUX port passwords have been disabled.
-> - Privileged EXEC (enable) password has been disabled.
-> - `exec-timeout` has been set to `0 0` to prevent session timeouts.
-> - `privilege level` has been set to `15` to provide immediate access to
->   privileged EXEC mode.
+> - Console and privileged EXEC (enable) passwords are disabled on the
+>   routers and switches. The ASA platform requires an enable password.
+> - Administrative accounts are granted privilege level 15, placing remote
+>   sessions directly into privileged EXEC mode.
+> - Session timeouts are disabled on the routers and switches, and set to
+>   the maximum the ASA firewalls permit.
 >
-> These configurations are **not suitable for production environments** and are
-> applied solely to improve accessibility during evaluation.
+> These settings are **not suitable for production environments**.
 
 ### 3.7 External Connectivity and Testing
 
@@ -562,8 +564,11 @@ Remote Site, and a test client.
 routing and enable connectivity between public IP ranges.
 
 - **Key Features:**
-  - **Static Routing:** Configured with static routes to allow return traffic
-    for NAT-translated communications.
+  - **NAT/PAT:** Translates traffic from the simulated public ranges onto its
+    own outside interface, giving the topology outbound internet access
+    without depending on the hypervisor's networking.
+  - **DNS Forwarding:** Acts as the upstream resolver for the network,
+    answering queries forwarded by `EDGE`.
   - **Public IP Simulation:** Used to simulate public IP ranges for:
     - **Main Site:** `172.20.1.2` - `172.20.1.6`
     - **Remote Site:** `172.25.1.2`
@@ -756,18 +761,18 @@ All results are included in the following files:
 
 ### A. Device Configuration Files
 
-- [configs/CLOUD.txt](configs/CLOUD.txt)
-- [configs/ASA-MAIN.txt](configs/ASA-MAIN.txt)
-- [configs/EDGE.txt](configs/EDGE.txt)
-- [configs/R1.txt](configs/R1.txt)
-- [configs/R2.txt](configs/R2.txt)
-- [configs/SW-FLOOR-1.txt](configs/SW-FLOOR-1.txt)
-- [configs/SW-FLOOR-2.txt](configs/SW-FLOOR-2.txt)
-- [configs/SW-FLOOR-3.txt](configs/SW-FLOOR-3.txt)
-- [configs/SW-EDGE.txt](configs/SW-EDGE.txt)
-- [configs/SW-WAREHOUSE.txt](configs/SW-WAREHOUSE.txt)
-- [configs/ASA-REMOTE.txt](configs/ASA-REMOTE.txt)
-- [configs/SW-REMOTE.txt](configs/SW-REMOTE.txt)
+- [configs/CLOUD.cfg](configs/CLOUD.cfg)
+- [configs/ASA-MAIN.cfg](configs/ASA-MAIN.cfg)
+- [configs/EDGE.cfg](configs/EDGE.cfg)
+- [configs/R1.cfg](configs/R1.cfg)
+- [configs/R2.cfg](configs/R2.cfg)
+- [configs/SW-FLOOR-1.cfg](configs/SW-FLOOR-1.cfg)
+- [configs/SW-FLOOR-2.cfg](configs/SW-FLOOR-2.cfg)
+- [configs/SW-FLOOR-3.cfg](configs/SW-FLOOR-3.cfg)
+- [configs/SW-EDGE.cfg](configs/SW-EDGE.cfg)
+- [configs/SW-WAREHOUSE.cfg](configs/SW-WAREHOUSE.cfg)
+- [configs/ASA-REMOTE.cfg](configs/ASA-REMOTE.cfg)
+- [configs/SW-REMOTE.cfg](configs/SW-REMOTE.cfg)
 
 ### B. References
 
