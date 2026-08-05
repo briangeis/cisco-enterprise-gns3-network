@@ -1,2 +1,6 @@
 # Exclude testing scripts from language statistics
 scripts/*.sh linguist-vendored
+
+# Exclude device configurations from language statistics
+# Cisco IOS has no Linguist entry; .cfg otherwise resolves to INI
+configs/*.cfg linguist-language=Cisco-IOS linguist-detectable=false
