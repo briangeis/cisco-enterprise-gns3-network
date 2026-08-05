@@ -104,7 +104,7 @@ demonstrated throughout the network implementation.
 #### Simulation and Management
 
 - GNS3 virtualization platform for network simulation
-- GNS3 Cloud Appliance for integration with the host network
+- GNS3 NAT Appliance for external connectivity
 
 ## 2. Network Architecture and Design
 
@@ -130,7 +130,11 @@ model NAT and internet access scenarios.
 
 ### 2.2 Network Topology
 
-![Network Topology Diagram](topology.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="topology-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="topology-light.png">
+  <img alt="Network Topology Diagram" src="topology-light.png">
+</picture>
 
 ### 2.3 Device Inventory
 
@@ -225,7 +229,7 @@ The following virtual appliances were used in the GNS3 simulation environment:
 |              | VLAN 70   | Shipping VLAN 70 Gateway      | 10.2.70.1 /24    |
 |              | G0/0      | Link to ASA-REMOTE            | 172.16.2.2 /30   |
 | Web-Client             | | Simulated External Web Client | 172.30.1.2 /24   |
-| GNS3 Cloud Appliance   | | Host Network Bridge           | N/A              |
+| GNS3-NAT               | | External Connectivity         | N/A              |
 | HSRP                   | | VLAN 20 Virtual Gateway       | 10.1.20.3 /24    |
 |                        | | VLAN 30 Virtual Gateway       | 10.1.30.3 /24    |
 |                        | | VLAN 40 Virtual Gateway       | 10.1.40.3 /24    |
@@ -582,23 +586,23 @@ routing and enable connectivity between public IP ranges.
   - Connected to `ASA-REMOTE` outside interface to simulate internet
     connectivity for the Remote Site.
   - Connected to `Web-Client` to simulate an external host.
+  - Connected to `GNS3-NAT` for outbound internet access.
 
-#### GNS3-CLOUD (GNS3 Cloud Appliance)
+#### GNS3-NAT (GNS3 NAT Appliance)
 
-- **Role:** Provides a bridge between the GNS3 virtual network and the host
-  machine's physical network.
+- **Role:** Provides the topology's connection to networks outside the
+  simulation.
 
 - **Key Features:**
-  - **Host Network Integration:** Connected to the host machine's Ethernet
-    adapter, allowing the virtual network to reach external DNS, web services,
-    or perform software updates.
+  - **Outbound Translation:** Traffic is translated onto the GNS3 server's
+    own network, allowing the simulated environment to reach external DNS,
+    web services, or perform software updates.
   - **Not Part of Logical Design:** This device is used solely for **testing
     and connectivity purposes** within the simulation environment and does
     not represent a real enterprise network component.
 
 - **Connectivity:**
   - Connected to `CLOUD` Router to provide internet access.
-  - Connected to the host network via Ethernet adapter for internet access.
 
 #### Web-Client (Simulated External Host)
 
