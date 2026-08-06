@@ -21,7 +21,7 @@ documentation, topology diagrams, and validation results.
 &nbsp;&nbsp;2.4 [VLAN Table](#24-vlan-table)  
 &nbsp;&nbsp;2.5 [Interface and IP Assignments](#25-interface-and-ip-assignments)  
 3. [Implementation](#3-implementation)  
-&nbsp;&nbsp;3.1 [Edge Site (Network Perimeter)](#31-edge-site-network-perimeter)  
+&nbsp;&nbsp;3.1 [Edge Site](#31-edge-site)  
 &nbsp;&nbsp;3.2 [Main Site](#32-main-site)  
 &nbsp;&nbsp;3.3 [Server Room](#33-server-room)  
 &nbsp;&nbsp;3.4 [Warehouse](#34-warehouse)  
@@ -90,6 +90,7 @@ demonstrated throughout the network implementation.
 #### Network Services
 
 - Dynamic Host Configuration Protocol (DHCP) for IP address assignment
+- Domain Name System (DNS) for name resolution and query forwarding
 - Network Time Protocol (NTP) for clock synchronization
 - HTTP server deployment for service demonstration
 - Static NAT for internal server accessibility
@@ -97,7 +98,7 @@ demonstrated throughout the network implementation.
 #### Automation and Testing
 
 - Bash scripting for automated network validation
-- End-to-end testing of connectivity, NAT, and ACL policies
+- End-to-end testing of connectivity, DNS, NAT, and ACL policies
 - Public IP range simulation for external access testing
 - External client simulation for validating web service accessibility
 
@@ -145,7 +146,7 @@ The following virtual appliances were used in the GNS3 simulation environment:
 | Router      | Cisco IOSv          | QEMU       | Cisco IOS 15.9(3)M9      |
 | Switch      | Cisco IOSvL2        | QEMU       | Cisco IOS 15.2(20200924) |
 | ASA         | Cisco ASAv          | QEMU       | Cisco ASA 9.22(1)1       |
-| End Host    | Alpine Linux        | Docker     | Alpine Linux 3.22.0      |
+| End Host    | Alpine Linux        | Docker     | Alpine Linux 3.22.5      |
 | Server      | Networkers' Toolbox | Docker     | Ubuntu 20.04.2 LTS       |
 
 ### 2.4 VLAN Table
@@ -243,7 +244,7 @@ in a logical progression: starting with the network perimeter, followed by
 internal sites, then the remote site, and concluding with the devices used
 to validate external connectivity and verify security policies.
 
-### 3.1 Edge Site (Network Perimeter)
+### 3.1 Edge Site
 
 #### Overview
 
