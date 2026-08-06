@@ -1,3 +1,13 @@
+/ # hostname
+NetAdmin-PC
+/ # traceroute -nI 172.16.1.1
+traceroute to 172.16.1.1 (172.16.1.1), 30 hops max, 46 byte packets
+ 1  10.1.20.1  5.763 ms  4.106 ms  5.679 ms
+ 2  172.16.1.10  5.057 ms  5.253 ms  6.479 ms
+ 3  172.16.1.1  5.252 ms  5.234 ms  6.396 ms
+/ #
+
+
 R1#show standby brief
                      P indicates configured to preempt.
                      |

@@ -652,8 +652,8 @@ This script ensures that:
 
 #### Results
 
-Test results from all hosts are included in:  
-[results/internal_connectivity_test_output.txt](results/internal_connectivity_test_output.txt)
+Test results from all end hosts are included in:  
+[results/connectivity-internal.txt](results/connectivity-internal.txt)
 
 ### 4.2 External Host Connectivity
 
@@ -679,7 +679,7 @@ This script ensures that:
 #### Results
 
 Test results are included in:  
-[results/external_connectivity_test_output.txt](results/external_connectivity_test_output.txt)
+[results/connectivity-external.txt](results/connectivity-external.txt)
 
 ### 4.3 OSPF Validation
 
@@ -698,12 +698,13 @@ show ip route ospf
 #### Validation Steps
 
 1. Under normal network conditions, OSPF neighbor relationships and
-  routing tables were captured from the three participating routers:
-  `EDGE`, `R1`, and `R2`.
+  routing tables were captured from all five participating devices:
+  `EDGE`, `R1`, `R2`, `SW-EDGE`, and `SW-WAREHOUSE`.
 2. `R1` was administratively shut down to simulate a failure, and
-  OSPF neighbor and route information was rechecked on `EDGE` and `R2`.  
+  OSPF neighbor and route information was rechecked on the four
+  remaining devices.
 3. After restoring `R1` to normal operation, `R2` was shut down,
-  and the same OSPF verification steps were repeated on `EDGE` and `R1`.
+  and the same OSPF verification steps were repeated.
 
 This test confirms that:
 
@@ -716,9 +717,9 @@ This test confirms that:
 
 All results are included in the following files:
 
-- [results/ospf_status_before.txt](results/ospf_status_before.txt)
-- [results/ospf_status_after_r1_down.txt](results/ospf_status_after_r1_down.txt)
-- [results/ospf_status_after_r2_down.txt](results/ospf_status_after_r2_down.txt)
+- [results/ospf-baseline.txt](results/ospf-baseline.txt)
+- [results/ospf-r1-down.txt](results/ospf-r1-down.txt)
+- [results/ospf-r2-down.txt](results/ospf-r2-down.txt)
 
 ### 4.4 HSRP Validation
 
@@ -730,7 +731,7 @@ failover occurs seamlessly when the active router becomes unavailable.
 #### Commands Used
 
 ```
-traceroute
+traceroute -nI
 show standby brief
 ```
 
@@ -759,10 +760,9 @@ This test confirms that:
 #### Results
 
 All results are included in the following files:
-- [results/hsrp_traceroute_before.txt](results/hsrp_traceroute_before.txt)
-- [results/hsrp_status_before.txt](results/hsrp_status_before.txt)
-- [results/hsrp_traceroute_after.txt](results/hsrp_traceroute_after.txt)
-- [results/hsrp_status_after.txt](results/hsrp_status_after.txt)
+
+- [results/hsrp-baseline.txt](results/hsrp-baseline.txt)
+- [results/hsrp-r2-down.txt](results/hsrp-r2-down.txt)
 
 ## Appendices
 
